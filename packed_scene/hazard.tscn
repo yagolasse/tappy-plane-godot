@@ -1,0 +1,15 @@
+[gd_scene load_steps=4 format=3 uid="uid://dve1ukuyr78hg"]
+
+[ext_resource type="Texture2D" uid="uid://d1hpg40q5otga" path="res://assets/kenney-tappy-plane/PNG/rockDown.png" id="1_ucoxe"]
+[ext_resource type="Script" path="res://scripts/hazard.gd" id="1_yhdk7"]
+[ext_resource type="Texture2D" uid="uid://dxe0btx38lvd4" path="res://assets/kenney-tappy-plane/PNG/rockGrass.png" id="2_j3pe6"]
+
+[node name="Hazard" type="Node2D"]
+script = ExtResource("1_yhdk7")
+
+[node name="TopSprite" type="Sprite2D" parent="."]
+texture = ExtResource("1_ucoxe")
+
+[node name="BottomSprite" type="Sprite2D" parent="."]
+position = Vector2(31, 320)
+texture = ExtResource("2_j3pe6")
