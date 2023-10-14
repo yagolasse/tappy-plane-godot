@@ -11,14 +11,19 @@ config_version=5
 [application]
 
 config/name="tappy-plane"
-run/main_scene="res://scene/game.tscn"
+run/main_scene="res://scenes/game.tscn"
 config/features=PackedStringArray("4.1", "Forward Plus")
 config/icon="res://icon.svg"
+
+[autoload]
+
+Groups="*res://scripts/groups.gd"
 
 [display]
 
 window/size/viewport_width=800
 window/size/viewport_height=480
+window/stretch/mode="viewport"
 
 [dotnet]
 

@@ -1,6 +1,8 @@
 extends CharacterBody2D
 class_name Player
 
+signal game_over
+
 @export var flap_speed: int 
 @export var player_skin_blue: SpriteFrames
 @export var visibility_notifier: VisibleOnScreenNotifier2D
@@ -20,8 +22,11 @@ func _physics_process(delta: float) -> void:
 	if Input.is_action_just_pressed("ui_accept"):
 		velocity.y = -flap_speed
 	
-	var _collision = move_and_collide(velocity * delta)
+	var collision = move_and_collide(velocity * delta)
+
+	if collision and collision.get_collider().is_in_group(Groups.HAZARDS):
+		game_over.emit()
 
 
 func _on_visibility_notifier_screen_exited() -> void:
-	print("Exited screen")
+	game_over.emit()

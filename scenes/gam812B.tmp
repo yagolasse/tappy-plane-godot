@@ -1,0 +1,79 @@
+[gd_scene load_steps=11 format=3 uid="uid://ee41xu521qfi"]
+
+[ext_resource type="Script" path="res://scripts/game.gd" id="1_11si3"]
+[ext_resource type="Script" path="res://scripts/parallax_background.gd" id="2_3lig0"]
+[ext_resource type="Texture2D" uid="uid://cwas5fbb84e2p" path="res://assets/kenney-tappy-plane/PNG/background.png" id="3_0shjk"]
+[ext_resource type="Script" path="res://scripts/hazards_layer.gd" id="4_ijgr7"]
+[ext_resource type="Texture2D" uid="uid://meq42rwr3ki3" path="res://assets/kenney-tappy-plane/PNG/groundDirt.png" id="5_0cvp1"]
+[ext_resource type="PackedScene" uid="uid://cpptjv6noawj4" path="res://packed_scene/player.tscn" id="6_fx7o3"]
+[ext_resource type="Script" path="res://scripts/camera_movement.gd" id="7_ldho8"]
+[ext_resource type="Script" path="res://scripts/blur_rect.gd" id="8_r8v0g"]
+[ext_resource type="Shader" path="res://shaders/blur.gdshader" id="8_uqen0"]
+
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_v0d5c"]
+shader = ExtResource("8_uqen0")
+shader_parameter/blur_strenght = 0.0
+
+[node name="World" type="Node2D" node_paths=PackedStringArray("player", "blur_rect", "include_on_pause")]
+process_mode = 3
+script = ExtResource("1_11si3")
+player = NodePath("MainCanvas/Player")
+blur_rect = NodePath("MainCanvas/BlurRect")
+include_on_pause = [NodePath("MainCanvas/Player"), NodePath("Camera")]
+
+[node name="ParallaxBackground" type="ParallaxBackground" parent="."]
+script = ExtResource("2_3lig0")
+
+[node name="BackgroundLayer" type="ParallaxLayer" parent="ParallaxBackground"]
+motion_scale = Vector2(0.2, 1)
+motion_mirroring = Vector2(860, 0)
+
+[node name="Background" type="Sprite2D" parent="ParallaxBackground/BackgroundLayer"]
+position = Vector2(-0.500008, -0.499985)
+scale = Vector2(1.075, 1)
+texture = ExtResource("3_0shjk")
+centered = false
+offset = Vector2(0, -240)
+region_enabled = true
+region_rect = Rect2(0, 0, 800, 480)
+
+[node name="HazardsLayer" type="ParallaxLayer" parent="ParallaxBackground" node_paths=PackedStringArray("first_spawn_position")]
+motion_scale = Vector2(0.5, 1)
+script = ExtResource("4_ijgr7")
+hazard_distance = 350
+initial_hazard_count = 8
+first_spawn_position = NodePath("InitialHazardPosition")
+
+[node name="InitialHazardPosition" type="Node2D" parent="ParallaxBackground/HazardsLayer"]
+position = Vector2(428, -1)
+
+[node name="ForegroundLayer" type="ParallaxLayer" parent="ParallaxBackground"]
+motion_mirroring = Vector2(807.975, 0)
+
+[node name="Foreground" type="Sprite2D" parent="ParallaxBackground/ForegroundLayer"]
+position = Vector2(2, 309)
+texture = ExtResource("5_0cvp1")
+centered = false
+offset = Vector2(0, -140.205)
+region_rect = Rect2(0, 0, 808, 71)
+
+[node name="MainCanvas" type="CanvasLayer" parent="."]
+
+[node name="Player" parent="MainCanvas" instance=ExtResource("6_fx7o3")]
+process_mode = 1
+position = Vector2(214, 240)
+flap_speed = 300
+
+[node name="BlurRect" type="ColorRect" parent="MainCanvas"]
+material = SubResource("ShaderMaterial_v0d5c")
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+script = ExtResource("8_r8v0g")
+
+[node name="Camera" type="Camera2D" parent="."]
+process_mode = 1
+script = ExtResource("7_ldho8")
+horizontal_speed = 300

@@ -1,0 +1,23 @@
+[gd_scene load_steps=3 format=3 uid="uid://dve1ukuyr78hg"]
+
+[ext_resource type="Script" path="res://scripts/hazard_composite.gd" id="1_8xnbp"]
+[ext_resource type="PackedScene" uid="uid://drm4vnpo5i1lb" path="res://packed_scene/hazard.tscn" id="2_284m3"]
+
+[node name="HazardComposite" type="Node2D" node_paths=PackedStringArray("top_hazard", "bottom_hazard", "visibility_notifier")]
+script = ExtResource("1_8xnbp")
+max_y_offset = 50.0
+max_hazard_offset = Vector2(10, 10)
+top_hazard = NodePath("TopHazard")
+bottom_hazard = NodePath("BottomHazard")
+visibility_notifier = NodePath("VisibilityNotifier")
+
+[node name="BottomHazard" parent="." instance=ExtResource("2_284m3")]
+position = Vector2(2, 181)
+rotation = 3.14159
+
+[node name="TopHazard" parent="." instance=ExtResource("2_284m3")]
+position = Vector2(0, -183)
+
+[node name="VisibilityNotifier" type="VisibleOnScreenNotifier2D" parent="."]
+position = Vector2(48, 2)
+scale = Vector2(2.3, 6.25)

@@ -3,10 +3,11 @@
 [ext_resource type="Script" path="res://scripts/player.gd" id="1_ug8fo"]
 [ext_resource type="SpriteFrames" uid="uid://c3mnyku6p27rb" path="res://resources/player_sprite_blue.tres" id="2_0bnyq"]
 
-[sub_resource type="RectangleShape2D" id="RectangleShape2D_kx2kj"]
-size = Vector2(64, 56)
+[sub_resource type="CircleShape2D" id="CircleShape2D_wtnf2"]
+radius = 32.0624
 
 [node name="Player" type="CharacterBody2D" node_paths=PackedStringArray("visibility_notifier")]
+position = Vector2(0, -1)
 script = ExtResource("1_ug8fo")
 flap_speed = 25000
 player_skin_blue = ExtResource("2_0bnyq")
@@ -18,7 +19,7 @@ animation = &"flap"
 
 [node name="Collider" type="CollisionShape2D" parent="."]
 position = Vector2(1, -3)
-shape = SubResource("RectangleShape2D_kx2kj")
+shape = SubResource("CircleShape2D_wtnf2")
 
 [node name="VisibilityNotifier" type="VisibleOnScreenNotifier2D" parent="."]
 position = Vector2(0.499998, -3)
