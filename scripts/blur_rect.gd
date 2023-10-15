@@ -10,15 +10,26 @@ const BLUR_STRENGHT_PARAMETER := "shader_parameter/blur_strenght"
 var _blur_tween: Tween
 
 
-func set_full_screen_blur(value: float, animate: bool) -> void:
-	if _blur_tween:
-		_blur_tween.kill()
-	
-	if animate: 
+func set_full_screen_blur(animate: bool) -> void:
+	if animate:
+		if _blur_tween:
+			_blur_tween.kill()
+		
 		_blur_tween = get_tree().create_tween().bind_node(node_to_bind)
 		_blur_tween.set_ease(Tween.EASE_OUT).tween_method(_set_blur_strenght, 0.0, max_blur_strenght, blur_animation_duration)
 	else:
-		_set_blur_strenght(value)
+		_set_blur_strenght(max_blur_strenght)
+
+
+func reset_full_screen_blur(animate: bool) -> void:
+	if animate:
+		if _blur_tween:
+			_blur_tween.kill()
+		
+		_blur_tween = get_tree().create_tween().bind_node(node_to_bind)
+		_blur_tween.set_ease(Tween.EASE_OUT).tween_method(_set_blur_strenght, max_blur_strenght, 0.0, blur_animation_duration)
+	else:
+		_set_blur_strenght(0)
 
 
 func _set_blur_strenght(value: float) -> void:

@@ -1,4 +1,4 @@
-[gd_scene load_steps=11 format=3 uid="uid://ee41xu521qfi"]
+[gd_scene load_steps=21 format=3 uid="uid://ee41xu521qfi"]
 
 [ext_resource type="Script" path="res://scripts/game.gd" id="1_11si3"]
 [ext_resource type="Script" path="res://scripts/parallax_background.gd" id="2_3lig0"]
@@ -9,16 +9,30 @@
 [ext_resource type="Script" path="res://scripts/camera_movement.gd" id="7_ldho8"]
 [ext_resource type="Script" path="res://scripts/blur_rect.gd" id="8_r8v0g"]
 [ext_resource type="Shader" path="res://shaders/blur.gdshader" id="8_uqen0"]
+[ext_resource type="Texture2D" uid="uid://bhvjeg4cmdf8w" path="res://assets/kenney-tappy-plane/PNG/UI/textGetReady.png" id="9_k8jak"]
+[ext_resource type="Texture2D" uid="uid://csyntbbopk1c4" path="res://assets/kenney-tappy-plane/PNG/UI/textGameOver.png" id="10_qs5jt"]
+[ext_resource type="Texture2D" uid="uid://cawmvlcf2voqh" path="res://assets/kenney-tappy-plane/PNG/UI/buttonLarge.png" id="11_40h77"]
+[ext_resource type="Texture2D" uid="uid://ycalnvwl5k80" path="res://assets/kenney-tappy-plane/PNG/Letters/letterM.png" id="12_531oc"]
+[ext_resource type="Texture2D" uid="uid://dcjeat3tgfpux" path="res://assets/kenney-tappy-plane/PNG/Letters/letterE.png" id="13_pyawd"]
+[ext_resource type="Texture2D" uid="uid://drsnyt5au5m3p" path="res://assets/kenney-tappy-plane/PNG/Letters/letterN.png" id="14_n8kj4"]
+[ext_resource type="Texture2D" uid="uid://cuwfsfaku6xwq" path="res://assets/kenney-tappy-plane/PNG/Letters/letterU.png" id="15_3hf25"]
+[ext_resource type="Texture2D" uid="uid://dn31cqk1yb4qn" path="res://assets/kenney-tappy-plane/PNG/Letters/letterR.png" id="16_opqm3"]
+[ext_resource type="Texture2D" uid="uid://cib2kupthxkx1" path="res://assets/kenney-tappy-plane/PNG/Letters/letterT.png" id="17_tobtl"]
+[ext_resource type="Texture2D" uid="uid://bfrl4vy5j5mbc" path="res://assets/kenney-tappy-plane/PNG/Letters/letterY.png" id="18_megh2"]
 
 [sub_resource type="ShaderMaterial" id="ShaderMaterial_v0d5c"]
 shader = ExtResource("8_uqen0")
 shader_parameter/blur_strenght = 0.0
 
-[node name="Game" type="Node2D" node_paths=PackedStringArray("player", "blur_rect", "include_on_pause")]
+[node name="Game" type="Node2D" node_paths=PackedStringArray("player", "blur_rect", "get_ready_logo", "game_over_logo", "menu_button", "retry_button", "include_on_pause")]
 process_mode = 3
 script = ExtResource("1_11si3")
 player = NodePath("MainCanvas/Player")
 blur_rect = NodePath("MainCanvas/BlurRect")
+get_ready_logo = NodePath("MainCanvas/GetReadyLogo")
+game_over_logo = NodePath("MainCanvas/GameOverLogo")
+menu_button = NodePath("MainCanvas/MenuUI/MenuButton")
+retry_button = NodePath("MainCanvas/MenuUI/RetryButton")
 include_on_pause = [NodePath("MainCanvas/Player"), NodePath("Camera")]
 
 [node name="ParallaxBackground" type="ParallaxBackground" parent="."]
@@ -75,6 +89,195 @@ script = ExtResource("8_r8v0g")
 node_to_bind = NodePath("../..")
 max_blur_strenght = 1.5
 blur_animation_duration = 0.3
+
+[node name="GetReadyLogo" type="Sprite2D" parent="MainCanvas"]
+position = Vector2(400, 240)
+texture = ExtResource("9_k8jak")
+
+[node name="GameOverLogo" type="Sprite2D" parent="MainCanvas"]
+position = Vector2(400, 240)
+texture = ExtResource("10_qs5jt")
+
+[node name="MenuUI" type="Control" parent="MainCanvas"]
+layout_mode = 3
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+
+[node name="MenuButton" type="TextureButton" parent="MainCanvas/MenuUI"]
+layout_mode = 1
+anchors_preset = 7
+anchor_left = 0.5
+anchor_top = 1.0
+anchor_right = 0.5
+anchor_bottom = 1.0
+offset_left = -227.0
+offset_top = -147.0
+offset_right = -31.0
+offset_bottom = -77.0
+grow_horizontal = 2
+grow_vertical = 0
+texture_normal = ExtResource("11_40h77")
+
+[node name="LetterM" type="TextureRect" parent="MainCanvas/MenuUI/MenuButton"]
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -78.0
+offset_top = -21.0
+offset_right = -30.0
+offset_bottom = 44.0
+grow_horizontal = 2
+grow_vertical = 2
+scale = Vector2(0.5, 0.5)
+texture = ExtResource("12_531oc")
+
+[node name="LetterE" type="TextureRect" parent="MainCanvas/MenuUI/MenuButton"]
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -35.0
+offset_top = -21.0
+offset_right = 13.0
+offset_bottom = 44.0
+grow_horizontal = 2
+grow_vertical = 2
+scale = Vector2(0.5, 0.5)
+texture = ExtResource("13_pyawd")
+
+[node name="LetterN" type="TextureRect" parent="MainCanvas/MenuUI/MenuButton"]
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = 9.0
+offset_top = -21.0
+offset_right = 70.0
+offset_bottom = 44.0
+grow_horizontal = 2
+grow_vertical = 2
+scale = Vector2(0.5, 0.5)
+texture = ExtResource("14_n8kj4")
+
+[node name="LetterU" type="TextureRect" parent="MainCanvas/MenuUI/MenuButton"]
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = 57.0
+offset_top = -21.0
+offset_right = 114.0
+offset_bottom = 45.0
+grow_horizontal = 2
+grow_vertical = 2
+scale = Vector2(0.5, 0.5)
+texture = ExtResource("15_3hf25")
+
+[node name="RetryButton" type="TextureButton" parent="MainCanvas/MenuUI"]
+layout_mode = 1
+anchors_preset = 7
+anchor_left = 0.5
+anchor_top = 1.0
+anchor_right = 0.5
+anchor_bottom = 1.0
+offset_left = 31.0
+offset_top = -146.0
+offset_right = 227.0
+offset_bottom = -76.0
+grow_horizontal = 2
+grow_vertical = 0
+texture_normal = ExtResource("11_40h77")
+
+[node name="LetterR" type="TextureRect" parent="MainCanvas/MenuUI/RetryButton"]
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -81.0
+offset_top = -20.0
+offset_right = -30.0
+offset_bottom = 45.0
+grow_horizontal = 2
+grow_vertical = 2
+scale = Vector2(0.5, 0.5)
+texture = ExtResource("16_opqm3")
+
+[node name="LetterE" type="TextureRect" parent="MainCanvas/MenuUI/RetryButton"]
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -48.0
+offset_top = -20.0
+offset_bottom = 45.0
+grow_horizontal = 2
+grow_vertical = 2
+scale = Vector2(0.5, 0.5)
+texture = ExtResource("13_pyawd")
+
+[node name="LetterT" type="TextureRect" parent="MainCanvas/MenuUI/RetryButton"]
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -15.0
+offset_top = -20.0
+offset_right = 37.0
+offset_bottom = 45.0
+grow_horizontal = 2
+grow_vertical = 2
+scale = Vector2(0.5, 0.5)
+texture = ExtResource("17_tobtl")
+
+[node name="LetterR2" type="TextureRect" parent="MainCanvas/MenuUI/RetryButton"]
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = 19.0
+offset_top = -21.0
+offset_right = 80.0
+offset_bottom = 44.0
+grow_horizontal = 2
+grow_vertical = 2
+scale = Vector2(0.5, 0.5)
+texture = ExtResource("16_opqm3")
+
+[node name="LetterY" type="TextureRect" parent="MainCanvas/MenuUI/RetryButton"]
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = 57.0
+offset_top = -21.0
+offset_right = 114.0
+offset_bottom = 44.0
+grow_horizontal = 2
+grow_vertical = 2
+scale = Vector2(0.5, 0.5)
+texture = ExtResource("18_megh2")
 
 [node name="Camera" type="Camera2D" parent="."]
 process_mode = 1

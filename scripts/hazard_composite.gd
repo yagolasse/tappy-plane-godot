@@ -41,5 +41,6 @@ func _prepare() -> void:
 
 func _on_visibility_notifier_screen_exited() -> void:
 	_prepare()
+	
 	position.x = hazards_layer.furtherest_x_position + hazards_layer.hazard_distance
 	hazards_layer.furtherest_x_position = position.x

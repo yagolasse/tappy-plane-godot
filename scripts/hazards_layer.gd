@@ -9,6 +9,7 @@ const HazardComposite: Resource = preload("res://packed_scene/hazard_composite.t
 
 var furtherest_x_position: float
 
+
 func _ready() -> void:
 	for i in range(initial_hazard_count):
 		var hazard_composite: HazardComposite = HazardComposite.instantiate()

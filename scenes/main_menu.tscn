@@ -1,0 +1,154 @@
+[gd_scene load_steps=11 format=3 uid="uid://c4iarbgj0o8du"]
+
+[ext_resource type="Texture2D" uid="uid://cawmvlcf2voqh" path="res://assets/kenney-tappy-plane/PNG/UI/buttonLarge.png" id="1_5nesv"]
+[ext_resource type="Texture2D" uid="uid://bpnvbpfdggk86" path="res://assets/kenney-tappy-plane/PNG/UI/UIbg.png" id="1_8ps7t"]
+[ext_resource type="Script" path="res://scripts/main_menu.gd" id="1_36b4a"]
+[ext_resource type="FontFile" uid="uid://oxtrrga7folf" path="res://assets/kenney-tappy-plane/Font/kenvector_future.ttf" id="2_dje2p"]
+[ext_resource type="Texture2D" uid="uid://8mkrr2dxbocw" path="res://assets/kenney-tappy-plane/PNG/Letters/letterP.png" id="3_lssvs"]
+[ext_resource type="Texture2D" uid="uid://dbc83l62lokbt" path="res://assets/kenney-tappy-plane/PNG/Letters/letterL.png" id="4_q18vi"]
+[ext_resource type="Texture2D" uid="uid://bonvx4va00jjw" path="res://assets/kenney-tappy-plane/PNG/Letters/letterA.png" id="5_c4mtx"]
+[ext_resource type="Texture2D" uid="uid://bfrl4vy5j5mbc" path="res://assets/kenney-tappy-plane/PNG/Letters/letterY.png" id="6_08pvb"]
+[ext_resource type="Texture2D" uid="uid://b1o08ksud1j18" path="res://assets/kenney-tappy-plane/PNG/puffLarge.png" id="8_7hitp"]
+[ext_resource type="Texture2D" uid="uid://b8b4u7ii38nrj" path="res://assets/kenney-tappy-plane/PNG/Planes/planeRed1.png" id="8_mh2tv"]
+
+[node name="MainMenu" type="CanvasLayer" node_paths=PackedStringArray("play_button")]
+script = ExtResource("1_36b4a")
+play_button = NodePath("MenuUI/PlayButton")
+
+[node name="MenuUI" type="Control" parent="."]
+texture_filter = 1
+layout_mode = 3
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+
+[node name="Background" type="TextureRect" parent="MenuUI"]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+texture = ExtResource("1_8ps7t")
+
+[node name="TappyPlane" type="Label" parent="MenuUI"]
+layout_mode = 1
+anchors_preset = 5
+anchor_left = 0.5
+anchor_right = 0.5
+offset_left = -47.0
+offset_top = 65.0
+offset_right = 47.0
+offset_bottom = 91.0
+grow_horizontal = 2
+theme_override_colors/font_color = Color(0.671875, 0.859375, 0.929688, 1)
+theme_override_colors/font_shadow_color = Color(0.84375, 0.714844, 0.191406, 1)
+theme_override_colors/font_outline_color = Color(0.363281, 0.636719, 0.738281, 1)
+theme_override_fonts/font = ExtResource("2_dje2p")
+theme_override_font_sizes/font_size = 80
+text = "Tappy Plane"
+
+[node name="PlayButton" type="TextureButton" parent="MenuUI"]
+layout_mode = 1
+anchors_preset = 7
+anchor_left = 0.5
+anchor_top = 1.0
+anchor_right = 0.5
+anchor_bottom = 1.0
+offset_left = -98.0
+offset_top = -131.0
+offset_right = 98.0
+offset_bottom = -61.0
+grow_horizontal = 2
+grow_vertical = 0
+texture_normal = ExtResource("1_5nesv")
+
+[node name="LetterP" type="TextureRect" parent="MenuUI/PlayButton"]
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -78.0
+offset_top = -21.0
+offset_right = -30.0
+offset_bottom = 44.0
+grow_horizontal = 2
+grow_vertical = 2
+scale = Vector2(0.5, 0.5)
+texture = ExtResource("3_lssvs")
+
+[node name="LetterL" type="TextureRect" parent="MenuUI/PlayButton"]
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -35.0
+offset_top = -21.0
+offset_right = 13.0
+offset_bottom = 44.0
+grow_horizontal = 2
+grow_vertical = 2
+scale = Vector2(0.5, 0.5)
+texture = ExtResource("4_q18vi")
+
+[node name="LetterA" type="TextureRect" parent="MenuUI/PlayButton"]
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = 10.0
+offset_top = -21.0
+offset_right = 71.0
+offset_bottom = 44.0
+grow_horizontal = 2
+grow_vertical = 2
+scale = Vector2(0.5, 0.5)
+texture = ExtResource("5_c4mtx")
+
+[node name="LetterY" type="TextureRect" parent="MenuUI/PlayButton"]
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = 52.0
+offset_top = -21.0
+offset_right = 109.0
+offset_bottom = 44.0
+grow_horizontal = 2
+grow_vertical = 2
+scale = Vector2(0.5, 0.5)
+texture = ExtResource("6_08pvb")
+
+[node name="Puff" type="TextureRect" parent="MenuUI"]
+layout_mode = 1
+anchors_preset = 4
+anchor_top = 0.5
+anchor_bottom = 0.5
+offset_left = 55.0
+offset_top = 35.0
+offset_right = 114.0
+offset_bottom = 84.0
+grow_vertical = 2
+texture = ExtResource("8_7hitp")
+
+[node name="Plane" type="TextureRect" parent="MenuUI"]
+layout_mode = 1
+anchors_preset = 4
+anchor_top = 0.5
+anchor_bottom = 0.5
+offset_left = 95.0
+offset_top = 14.0
+offset_right = 183.0
+offset_bottom = 87.0
+grow_vertical = 2
+texture = ExtResource("8_mh2tv")
