@@ -6,25 +6,26 @@ const TOP_SCORE_TEXT := "HIGHSCORE: %d"
 
 @export var player: Player
 @export var blur_rect: BlurRect
-@export var get_ready_logo: Sprite2D
-@export var game_over_logo: Sprite2D
+@export var hazards_layer: HazardsLayer
+@export var score_repository: ScoreRepository
+@export var include_on_pause: Array[Node2D]
+
+@export_category("UI")
+@export var get_ready_logo: TextureRect
+@export var game_over_logo: TextureRect
 @export var score_label: Label
 @export var top_score_label: Label
 @export var menu_button: TextureButton
 @export var retry_button: TextureButton
-@export var hazards_layer: HazardsLayer
-@export var score_save_manager: ScoreSaveManager
-
-@export var include_on_pause: Array[Node2D]
 
 var _paused = false
-var _logo_tween: Tween
 var _top_score: int
+var _logo_tween: Tween
 var _current_score: int: set = _set_current_score
 
 func _ready() -> void:
-	score_save_manager.load_current_high_score()
-	top_score_label.text = TOP_SCORE_TEXT % score_save_manager.top_score
+	score_repository.load_current_high_score()
+	top_score_label.text = TOP_SCORE_TEXT % score_repository.top_score
 	
 	player.game_over.connect(game_over)
 	menu_button.pressed.connect(_navigate_to_menu_scene)
@@ -72,7 +73,7 @@ func _pause(should_pause: bool) -> void:
 	_paused = should_pause
 
 
-func _tween_logo_to_alpha(logo: Sprite2D, alpha: float, callback: Callable = Callable()) -> void:
+func _tween_logo_to_alpha(logo: TextureRect, alpha: float, callback: Callable = Callable()) -> void:
 	if _logo_tween:
 		_logo_tween.kill()
 		
@@ -91,8 +92,8 @@ func _set_current_score(value: int) -> void:
 func game_over() -> void:
 	_pause(true)
 	
-	score_save_manager.save_score_if_higher(_current_score)
-	top_score_label.text = TOP_SCORE_TEXT % score_save_manager.top_score
+	score_repository.save_score_if_higher(_current_score)
+	top_score_label.text = TOP_SCORE_TEXT % score_repository.top_score
 	
 	menu_button.visible = true
 	retry_button.visible = true

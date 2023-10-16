@@ -1,5 +1,5 @@
 extends Node
-class_name ScoreSaveManager
+class_name ScoreRepository
 
 const SCORE_SAVE_FILE := "user://score.save"
 

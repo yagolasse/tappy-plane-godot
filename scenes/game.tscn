@@ -1,7 +1,7 @@
 [gd_scene load_steps=23 format=3 uid="uid://ee41xu521qfi"]
 
 [ext_resource type="Script" path="res://scripts/game.gd" id="1_11si3"]
-[ext_resource type="Script" path="res://scripts/score_save_manager.gd" id="2_2yo1m"]
+[ext_resource type="Script" path="res://scripts/score_repository.gd" id="2_0mrmj"]
 [ext_resource type="Script" path="res://scripts/parallax_background.gd" id="2_3lig0"]
 [ext_resource type="Texture2D" uid="uid://cwas5fbb84e2p" path="res://assets/kenney-tappy-plane/PNG/background.png" id="3_0shjk"]
 [ext_resource type="Script" path="res://scripts/hazards_layer.gd" id="4_ijgr7"]
@@ -26,23 +26,23 @@
 shader = ExtResource("8_uqen0")
 shader_parameter/blur_strenght = 0.0
 
-[node name="Game" type="Node2D" node_paths=PackedStringArray("player", "blur_rect", "get_ready_logo", "game_over_logo", "score_label", "top_score_label", "menu_button", "retry_button", "hazards_layer", "score_save_manager", "include_on_pause")]
+[node name="Game" type="Node2D" node_paths=PackedStringArray("player", "blur_rect", "hazards_layer", "score_repository", "include_on_pause", "get_ready_logo", "game_over_logo", "score_label", "top_score_label", "menu_button", "retry_button")]
 process_mode = 3
 script = ExtResource("1_11si3")
 player = NodePath("MainCanvas/Player")
 blur_rect = NodePath("MainCanvas/BlurRect")
-get_ready_logo = NodePath("MainCanvas/GetReadyLogo")
-game_over_logo = NodePath("MainCanvas/GameOverLogo")
+hazards_layer = NodePath("ParallaxBackground/HazardsLayer")
+score_repository = NodePath("ScoreRepository")
+include_on_pause = [NodePath("MainCanvas/Player"), NodePath("Camera")]
+get_ready_logo = NodePath("MainCanvas/GameStatusUI/GetReadyLogo")
+game_over_logo = NodePath("MainCanvas/GameStatusUI/GameOverLogo")
 score_label = NodePath("MainCanvas/ScoreUI/ScoreLabel")
 top_score_label = NodePath("MainCanvas/ScoreUI/TopScoreLabel")
 menu_button = NodePath("MainCanvas/MenuUI/MenuButton")
 retry_button = NodePath("MainCanvas/MenuUI/RetryButton")
-hazards_layer = NodePath("ParallaxBackground/HazardsLayer")
-score_save_manager = NodePath("ScoreSaveManager")
-include_on_pause = [NodePath("MainCanvas/Player"), NodePath("Camera")]
 
-[node name="ScoreSaveManager" type="Node" parent="."]
-script = ExtResource("2_2yo1m")
+[node name="ScoreRepository" type="Node" parent="."]
+script = ExtResource("2_0mrmj")
 
 [node name="ParallaxBackground" type="ParallaxBackground" parent="."]
 script = ExtResource("2_3lig0")
@@ -99,12 +99,42 @@ node_to_bind = NodePath("../..")
 max_blur_strenght = 1.5
 blur_animation_duration = 0.3
 
-[node name="GetReadyLogo" type="Sprite2D" parent="MainCanvas"]
-position = Vector2(400, 240)
+[node name="GameStatusUI" type="Control" parent="MainCanvas"]
+layout_mode = 3
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+
+[node name="GetReadyLogo" type="TextureRect" parent="MainCanvas/GameStatusUI"]
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -20.0
+offset_top = -20.0
+offset_right = 20.0
+offset_bottom = 20.0
+grow_horizontal = 2
+grow_vertical = 2
 texture = ExtResource("9_k8jak")
 
-[node name="GameOverLogo" type="Sprite2D" parent="MainCanvas"]
-position = Vector2(400, 240)
+[node name="GameOverLogo" type="TextureRect" parent="MainCanvas/GameStatusUI"]
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -20.0
+offset_top = -20.0
+offset_right = 20.0
+offset_bottom = 20.0
+grow_horizontal = 2
+grow_vertical = 2
 texture = ExtResource("10_qs5jt")
 
 [node name="ScoreUI" type="Control" parent="MainCanvas"]
