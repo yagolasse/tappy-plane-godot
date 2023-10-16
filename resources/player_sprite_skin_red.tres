@@ -1,0 +1,22 @@
+[gd_resource type="SpriteFrames" load_steps=4 format=3 uid="uid://xfdlto8nlxee"]
+
+[ext_resource type="Texture2D" uid="uid://b8b4u7ii38nrj" path="res://assets/kenney-tappy-plane/PNG/Planes/planeRed1.png" id="1_8rxkv"]
+[ext_resource type="Texture2D" uid="uid://lnd5eng2vavd" path="res://assets/kenney-tappy-plane/PNG/Planes/planeRed2.png" id="2_ix1g8"]
+[ext_resource type="Texture2D" uid="uid://cvfqunprg3nse" path="res://assets/kenney-tappy-plane/PNG/Planes/planeRed3.png" id="3_cngrg"]
+
+[resource]
+animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": ExtResource("1_8rxkv")
+}, {
+"duration": 1.0,
+"texture": ExtResource("2_ix1g8")
+}, {
+"duration": 1.0,
+"texture": ExtResource("3_cngrg")
+}],
+"loop": true,
+"name": &"engine_on",
+"speed": 18.0
+}]

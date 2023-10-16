@@ -1,0 +1,14 @@
+[gd_resource type="Resource" script_class="PlayerSpriteSkin" load_steps=6 format=3 uid="uid://cf7wft41g2adf"]
+
+[ext_resource type="SpriteFrames" uid="uid://dd1r51vpf8o3y" path="res://resources/player_sprite_skin_blue.tres" id="1_3je77"]
+[ext_resource type="Script" path="res://scripts/player_sprite_skin.gd" id="1_t44f3"]
+[ext_resource type="SpriteFrames" uid="uid://54hrkitma3cm" path="res://resources/player_sprite_skin_green.tres" id="2_4di77"]
+[ext_resource type="SpriteFrames" uid="uid://xfdlto8nlxee" path="res://resources/player_sprite_skin_red.tres" id="3_euh4o"]
+[ext_resource type="SpriteFrames" uid="uid://bik5kkw7ev0j4" path="res://resources/player_sprite_skin_yellow.tres" id="4_jrgnt"]
+
+[resource]
+script = ExtResource("1_t44f3")
+player_skin_red = ExtResource("3_euh4o")
+player_skin_blue = ExtResource("1_3je77")
+player_skin_green = ExtResource("2_4di77")
+player_skin_yellow = ExtResource("4_jrgnt")

@@ -1,4 +1,4 @@
-[gd_scene load_steps=11 format=3 uid="uid://c4iarbgj0o8du"]
+[gd_scene load_steps=13 format=3 uid="uid://c4iarbgj0o8du"]
 
 [ext_resource type="Texture2D" uid="uid://cawmvlcf2voqh" path="res://assets/kenney-tappy-plane/PNG/UI/buttonLarge.png" id="1_5nesv"]
 [ext_resource type="Texture2D" uid="uid://bpnvbpfdggk86" path="res://assets/kenney-tappy-plane/PNG/UI/UIbg.png" id="1_8ps7t"]
@@ -8,8 +8,10 @@
 [ext_resource type="Texture2D" uid="uid://dbc83l62lokbt" path="res://assets/kenney-tappy-plane/PNG/Letters/letterL.png" id="4_q18vi"]
 [ext_resource type="Texture2D" uid="uid://bonvx4va00jjw" path="res://assets/kenney-tappy-plane/PNG/Letters/letterA.png" id="5_c4mtx"]
 [ext_resource type="Texture2D" uid="uid://bfrl4vy5j5mbc" path="res://assets/kenney-tappy-plane/PNG/Letters/letterY.png" id="6_08pvb"]
-[ext_resource type="Texture2D" uid="uid://b1o08ksud1j18" path="res://assets/kenney-tappy-plane/PNG/puffLarge.png" id="8_7hitp"]
 [ext_resource type="Texture2D" uid="uid://b8b4u7ii38nrj" path="res://assets/kenney-tappy-plane/PNG/Planes/planeRed1.png" id="8_mh2tv"]
+[ext_resource type="Texture2D" uid="uid://b33dod0cnl8ny" path="res://assets/kenney-tappy-plane/PNG/puffSmall.png" id="9_cjaim"]
+[ext_resource type="Texture2D" uid="uid://boetgcjghkxl1" path="res://assets/kenney-tappy-plane/PNG/UI/tapRight.png" id="10_id4lc"]
+[ext_resource type="Texture2D" uid="uid://dr88iemce1ydb" path="res://assets/kenney-tappy-plane/PNG/UI/tapLeft.png" id="11_6na4q"]
 
 [node name="MainMenu" type="CanvasLayer" node_paths=PackedStringArray("play_button")]
 script = ExtResource("1_36b4a")
@@ -131,24 +133,62 @@ texture = ExtResource("6_08pvb")
 
 [node name="Puff" type="TextureRect" parent="MenuUI"]
 layout_mode = 1
-anchors_preset = 4
+anchors_preset = 8
+anchor_left = 0.5
 anchor_top = 0.5
+anchor_right = 0.5
 anchor_bottom = 0.5
-offset_left = 55.0
-offset_top = 35.0
-offset_right = 114.0
-offset_bottom = 84.0
+offset_left = -215.0
+offset_top = -2.0
+offset_right = -178.0
+offset_bottom = 27.0
+grow_horizontal = 2
 grow_vertical = 2
-texture = ExtResource("8_7hitp")
+texture = ExtResource("9_cjaim")
+
+[node name="TapRight" type="TextureRect" parent="MenuUI"]
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -320.0
+offset_top = 7.99998
+offset_right = -235.0
+offset_bottom = 50.0
+grow_horizontal = 2
+grow_vertical = 2
+rotation = -0.13439
+texture = ExtResource("10_id4lc")
+
+[node name="TapLeft" type="TextureRect" parent="MenuUI"]
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -88.0
+offset_top = -9.00002
+offset_right = -3.0
+offset_bottom = 33.0
+grow_horizontal = 2
+grow_vertical = 2
+rotation = 0.188496
+texture = ExtResource("11_6na4q")
 
 [node name="Plane" type="TextureRect" parent="MenuUI"]
 layout_mode = 1
-anchors_preset = 4
+anchors_preset = 8
+anchor_left = 0.5
 anchor_top = 0.5
+anchor_right = 0.5
 anchor_bottom = 0.5
-offset_left = 95.0
-offset_top = 14.0
-offset_right = 183.0
-offset_bottom = 87.0
+offset_left = -198.0
+offset_top = -32.0
+offset_right = -110.0
+offset_bottom = 41.0
+grow_horizontal = 2
 grow_vertical = 2
 texture = ExtResource("8_mh2tv")

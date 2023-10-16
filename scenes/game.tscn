@@ -77,7 +77,7 @@ motion_mirroring = Vector2(807.975, 0)
 position = Vector2(2, 309)
 texture = ExtResource("5_0cvp1")
 centered = false
-offset = Vector2(0, -140.205)
+offset = Vector2(-2.705, -122.645)
 region_rect = Rect2(0, 0, 808, 71)
 
 [node name="MainCanvas" type="CanvasLayer" parent="."]
