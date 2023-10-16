@@ -8,4 +8,4 @@ func _ready() -> void:
 
 
 func _navigate_to_game_scene() -> void:
-	get_tree().change_scene_to_file("res://scenes/game.tscn")
+	get_tree().change_scene_to_file(Scenes.GAME)

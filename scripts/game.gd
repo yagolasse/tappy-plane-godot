@@ -28,8 +28,8 @@ func _ready() -> void:
 	top_score_label.text = TOP_SCORE_TEXT % score_repository.top_score
 	
 	player.game_over.connect(game_over)
-	menu_button.pressed.connect(_navigate_to_menu_scene)
 	retry_button.pressed.connect(_restart_game)
+	menu_button.pressed.connect(_navigate_to_menu_scene)
 	
 	for child in hazards_layer.get_children():
 		if child is HazardComposite:
@@ -43,7 +43,7 @@ func _point_scored() -> void:
 
 
 func _navigate_to_menu_scene() -> void:
-	get_tree().change_scene_to_file("res://scenes/main_menu.tscn")
+	get_tree().change_scene_to_file(Scenes.MAIN_MENU)
 	_pause(false)
 
 
