@@ -1,7 +1,6 @@
-[gd_scene load_steps=23 format=3 uid="uid://ee41xu521qfi"]
+[gd_scene load_steps=21 format=3 uid="uid://ee41xu521qfi"]
 
 [ext_resource type="Script" path="res://scripts/game.gd" id="1_11si3"]
-[ext_resource type="Script" path="res://scripts/score_save_manager.gd" id="2_2yo1m"]
 [ext_resource type="Script" path="res://scripts/parallax_background.gd" id="2_3lig0"]
 [ext_resource type="Texture2D" uid="uid://cwas5fbb84e2p" path="res://assets/kenney-tappy-plane/PNG/background.png" id="3_0shjk"]
 [ext_resource type="Script" path="res://scripts/hazards_layer.gd" id="4_ijgr7"]
@@ -13,7 +12,6 @@
 [ext_resource type="Texture2D" uid="uid://bhvjeg4cmdf8w" path="res://assets/kenney-tappy-plane/PNG/UI/textGetReady.png" id="9_k8jak"]
 [ext_resource type="Texture2D" uid="uid://csyntbbopk1c4" path="res://assets/kenney-tappy-plane/PNG/UI/textGameOver.png" id="10_qs5jt"]
 [ext_resource type="Texture2D" uid="uid://cawmvlcf2voqh" path="res://assets/kenney-tappy-plane/PNG/UI/buttonLarge.png" id="11_40h77"]
-[ext_resource type="FontFile" uid="uid://oxtrrga7folf" path="res://assets/kenney-tappy-plane/Font/kenvector_future.ttf" id="11_gifdw"]
 [ext_resource type="Texture2D" uid="uid://ycalnvwl5k80" path="res://assets/kenney-tappy-plane/PNG/Letters/letterM.png" id="12_531oc"]
 [ext_resource type="Texture2D" uid="uid://dcjeat3tgfpux" path="res://assets/kenney-tappy-plane/PNG/Letters/letterE.png" id="13_pyawd"]
 [ext_resource type="Texture2D" uid="uid://drsnyt5au5m3p" path="res://assets/kenney-tappy-plane/PNG/Letters/letterN.png" id="14_n8kj4"]
@@ -26,23 +24,16 @@
 shader = ExtResource("8_uqen0")
 shader_parameter/blur_strenght = 0.0
 
-[node name="Game" type="Node2D" node_paths=PackedStringArray("player", "blur_rect", "get_ready_logo", "game_over_logo", "score_label", "top_score_label", "menu_button", "retry_button", "hazards_layer", "score_save_manager", "include_on_pause")]
+[node name="Game" type="Node2D" node_paths=PackedStringArray("player", "blur_rect", "get_ready_logo", "game_over_logo", "menu_button", "retry_button", "include_on_pause")]
 process_mode = 3
 script = ExtResource("1_11si3")
 player = NodePath("MainCanvas/Player")
 blur_rect = NodePath("MainCanvas/BlurRect")
 get_ready_logo = NodePath("MainCanvas/GetReadyLogo")
 game_over_logo = NodePath("MainCanvas/GameOverLogo")
-score_label = NodePath("MainCanvas/ScoreUI/ScoreLabel")
-top_score_label = NodePath("MainCanvas/ScoreUI/TopScoreLabel")
 menu_button = NodePath("MainCanvas/MenuUI/MenuButton")
 retry_button = NodePath("MainCanvas/MenuUI/RetryButton")
-hazards_layer = NodePath("ParallaxBackground/HazardsLayer")
-score_save_manager = NodePath("ScoreSaveManager")
 include_on_pause = [NodePath("MainCanvas/Player"), NodePath("Camera")]
-
-[node name="ScoreSaveManager" type="Node" parent="."]
-script = ExtResource("2_2yo1m")
 
 [node name="ParallaxBackground" type="ParallaxBackground" parent="."]
 script = ExtResource("2_3lig0")
@@ -106,44 +97,6 @@ texture = ExtResource("9_k8jak")
 [node name="GameOverLogo" type="Sprite2D" parent="MainCanvas"]
 position = Vector2(400, 240)
 texture = ExtResource("10_qs5jt")
-
-[node name="ScoreUI" type="Control" parent="MainCanvas"]
-layout_mode = 3
-anchors_preset = 15
-anchor_right = 1.0
-anchor_bottom = 1.0
-grow_horizontal = 2
-grow_vertical = 2
-
-[node name="ScoreLabel" type="Label" parent="MainCanvas/ScoreUI"]
-layout_mode = 1
-offset_left = 14.0
-offset_top = 13.0
-offset_right = 54.0
-offset_bottom = 36.0
-theme_override_colors/font_color = Color(0.996094, 0.796875, 0, 1)
-theme_override_colors/font_shadow_color = Color(0.269531, 0.269531, 0.269531, 1)
-theme_override_colors/font_outline_color = Color(0.746094, 0.597656, 0, 1)
-theme_override_fonts/font = ExtResource("11_gifdw")
-theme_override_font_sizes/font_size = 30
-text = "Score: 0"
-
-[node name="TopScoreLabel" type="Label" parent="MainCanvas/ScoreUI"]
-layout_mode = 1
-anchors_preset = 1
-anchor_left = 1.0
-anchor_right = 1.0
-offset_left = -181.0
-offset_top = 13.0
-offset_right = -13.0
-offset_bottom = 51.0
-grow_horizontal = 0
-theme_override_colors/font_color = Color(0.996094, 0.796875, 0, 1)
-theme_override_colors/font_shadow_color = Color(0.269531, 0.269531, 0.269531, 1)
-theme_override_colors/font_outline_color = Color(0.746094, 0.597656, 0, 1)
-theme_override_fonts/font = ExtResource("11_gifdw")
-theme_override_font_sizes/font_size = 30
-text = "Score: 0"
 
 [node name="MenuUI" type="Control" parent="MainCanvas"]
 layout_mode = 3

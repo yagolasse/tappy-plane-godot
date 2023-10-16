@@ -1,22 +1,44 @@
 extends Node2D
 class_name Game
 
+const SCORE_TEXT := "SCORE: %d"
+const TOP_SCORE_TEXT := "HIGHSCORE: %d"
+
 @export var player: Player
 @export var blur_rect: BlurRect
 @export var get_ready_logo: Sprite2D
 @export var game_over_logo: Sprite2D
+@export var score_label: Label
+@export var top_score_label: Label
 @export var menu_button: TextureButton
 @export var retry_button: TextureButton
+@export var hazards_layer: HazardsLayer
+@export var score_save_manager: ScoreSaveManager
+
 @export var include_on_pause: Array[Node2D]
 
 var _paused = false
 var _logo_tween: Tween
+var _top_score: int
+var _current_score: int: set = _set_current_score
 
 func _ready() -> void:
+	score_save_manager.load_current_high_score()
+	top_score_label.text = TOP_SCORE_TEXT % score_save_manager.top_score
+	
 	player.game_over.connect(game_over)
 	menu_button.pressed.connect(_navigate_to_menu_scene)
 	retry_button.pressed.connect(_restart_game)
+	
+	for child in hazards_layer.get_children():
+		if child is HazardComposite:
+			(child as HazardComposite).point_scored.connect(_point_scored)
+	
 	_start()
+
+
+func _point_scored() -> void:
+	_current_score += 1
 
 
 func _navigate_to_menu_scene() -> void:
@@ -36,6 +58,8 @@ func _start() -> void:
 	retry_button.visible = false
 	game_over_logo.modulate.a = 0
 	get_ready_logo.modulate.a = 1
+	
+	_current_score = 0
 	
 	blur_rect.reset_full_screen_blur(true)
 	_tween_logo_to_alpha(get_ready_logo, 0, func(): _pause(false))
@@ -59,8 +83,16 @@ func _tween_logo_to_alpha(logo: Sprite2D, alpha: float, callback: Callable = Cal
 		_logo_tween.tween_callback(callback)
 
 
+func _set_current_score(value: int) -> void:
+	_current_score = value
+	score_label.text = SCORE_TEXT % value
+
+
 func game_over() -> void:
 	_pause(true)
+	
+	score_save_manager.save_score_if_higher(_current_score)
+	top_score_label.text = TOP_SCORE_TEXT % score_save_manager.top_score
 	
 	menu_button.visible = true
 	retry_button.visible = true

@@ -1,0 +1,32 @@
+[gd_scene load_steps=23 format=3 uid="uid://ee41xu521qfi"]
+
+[ext_resource type="Script" path="res://scripts/game.gd" id="1_11si3"]
+[ext_resource type="Script" path="res://scripts/score_save_manager.gd" id="2_2yo1m"]
+[ext_resource type="Script" path="res://scripts/parallax_background.gd" id="2_3lig0"]
+[ext_resource type="Texture2D" uid="uid://cwas5fbb84e2p" path="res://assets/kenney-tappy-plane/PNG/background.png" id="3_0shjk"]
+[ext_resource type="Script" path="res://scripts/hazards_layer.gd" id="4_ijgr7"]
+[ext_resource type="Texture2D" uid="uid://meq42rwr3ki3" path="res://assets/kenney-tappy-plane/PNG/groundDirt.png" id="5_0cvp1"]
+[ext_resource type="PackedScene" uid="uid://cpptjv6noawj4" path="res://packed_scene/player.tscn" id="6_fx7o3"]
+[ext_resource type="Script" path="res://scripts/camera_movement.gd" id="7_ldho8"]
+[ext_resource type="Script" path="res://scripts/blur_rect.gd" id="8_r8v0g"]
+[ext_resource type="Shader" path="res://shaders/blur.gdshader" id="8_uqen0"]
+[ext_resource type="Texture2D" uid="uid://bhvjeg4cmdf8w" path="res://assets/kenney-tappy-plane/PNG/UI/textGetReady.png" id="9_k8jak"]
+[ext_resource type="Texture2D" uid="uid://csyntbbopk1c4" path="res://assets/kenney-tappy-plane/PNG/UI/textGameOver.png" id="10_qs5jt"]
+[ext_resource type="Texture2D" uid="uid://cawmvlcf2voqh" path="res://assets/kenney-tappy-plane/PNG/UI/buttonLarge.png" id="11_40h77"]
+[ext_resource type="FontFile" uid="uid://oxtrrga7folf" path="res://assets/kenney-tappy-plane/Font/kenvector_future.ttf" id="11_gifdw"]
+[ext_resource type="Texture2D" uid="uid://ycalnvwl5k80" path="res://assets/kenney-tappy-plane/PNG/Letters/letterM.png" id="12_531oc"]
+[ext_resource type="Texture2D" uid="uid://dcjeat3tgfpux" path="res://assets/kenney-tappy-plane/PNG/Letters/letterE.png" id="13_pyawd"]
+[ext_resource type="Texture2D" uid="uid://drsnyt5au5m3p" path="res://assets/kenney-tappy-plane/PNG/Letters/letterN.png" id="14_n8kj4"]
+[ext_resource type="Texture2D" uid="uid://cuwfsfaku6xwq" path="res://assets/kenney-tappy-plane/PNG/Letters/letterU.png" id="15_3hf25"]
+[ext_resource type="Texture2D" uid="uid://dn31cqk1yb4qn" path="res://assets/kenney-tappy-plane/PNG/Letters/letterR.png" id="16_opqm3"]
+[ext_resource type="Texture2D" uid="uid://cib2kupthxkx1" path="res://assets/kenney-tappy-plane/PNG/Letters/letterT.png" id="17_tobtl"]
+[ext_resource type="Texture2D" uid="uid://bfrl4vy5j5mbc" path="res://assets/kenney-tappy-plane/PNG/Letters/letterY.png" id="18_megh2"]
+
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_v0d5c"]
+shader = ExtResource("8_uqen0")
+shader_parameter/blur_strenght = 0.0
+
+[node name="Game" type="Node2D"]
+process_mode = 3
+script = ExtResource("1_11si3")
+player = Object(CharacterBody2D,"_import_path":NodePath(""),"unique_name_in_owner":false,"process_mode":1,"process_priority":0,"process_physics_priority":0,"process_thread_group":0,"editor_description":"","visible":true,"modulate":Color(1, 1, 1, 1),"self_modulate":Color(1, 1, 1, 1),"show_behind_parent":false,"top_level":false,"light_mask":1,"visibility_layer":1,"z_index":0,"z_as_relative":true,"y_sort_enabled":false,"texture_filter":0,"texture_repeat":0,"material":null,"use_parent_material":false,"position":Vector2(214, 240),"rotation":0.0,"scale":Vector2(1, 1),"skew":0.0,"disable_mode":0,"collision_layer":1,"collision_mask":1,"collision_priority":1.0,"input_pickable":false,"motion_mode":0,"up_direction":Vector2(0, -1),"velocity":Vector2(0, 0),"slide_on_ceiling":true,"max_slides":4,"wall_min_slide_angle":0.261799,"floor_stop_on_slope":true,"floor_constant_speed":false,"floor_block_on_wall":true,"floor_max_angle":0.785398,"floor_snap_length":1.0,"platform_on_leave":0,"platform_floor_layers":4294967295,"platform_wall_layers":0,"safe_margin":0.08,"script":Resource("res://scripts/player.gd"),"flap_speed":300,"player_skin_blue":Resource("res://resources/player_sprite_blue.tres"),"visibility_notifier":Object(VisibleOnScreenNotifier2D,"_import_path":NodePath(""),"unique_name_in_owner":false,"process_mode":0,"process_priority":0,"process_physics_priority":0,"process_thread_group":0,"editor_descript
